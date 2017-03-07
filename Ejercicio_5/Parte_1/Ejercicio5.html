@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Ejercico 5 - HTML</title>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="description" content="Web programming">
+  <meta name="author" content="Sergio Roselló Morell">
+  <script src="Ejercicio5.js"></script>
+  <link rel="stylesheet" type="text/css" href="Ejercicio5.css">
+</head>
+
+<body>
+
+  <h2>Actividad 1:</h2>
+  <form name = "formulario" action = "#" method = "get" onsubmit = "return !!(validateForm() & checkRad())">
+   <label>Name: </label>
+   <input name = "name" type = "text" placeholder = "Name">
+   <br>
+   <label>Seleccion multiple: </label><br>
+   <select name = "seleccion multiple" required="1" size = "5" multiple = "multiple">
+    <option value = "option1"> Option1 </option>
+    <option value = "option2"> Option2 </option>
+    <option value = "option3"> Option3 </option>
+    <option value = "option4"> Option4 </option>
+    <option value = "option5"> Option5 </option>
+  </select>
+
+  <br>
+  <label for="radius">Options: </label><br>
+  <blockquote>
+      <label for="option1">option1</label>
+      <input id="option1" name="rad" type="radio" value="option1"><br>
+      <label for="option2">option2</label>
+      <input id="option2" name="rad" type="radio" value="option2"><br>
+      <label for="option3">option3</label>
+      <input id="option3" name="rad" type="radio" value="option3"><br>
+      <label for="option4">option4</label>
+      <input id="option4" name="rad" type="radio" value="option4"><br>
+  </blockquote>
+
+
+  <label for="rad">Options: </label><br>
+  <blockquote>
+   <label for="chk">Option 1</label>
+   <input id="chk" name="chk" type="checkbox" value="yes"><br>
+   <label for="chk">Option 2</label>
+   <input id="chk" name="chk" type="checkbox" value="yes"><br>
+   <label for="chk">Option 3</label>
+   <input id="chk" name="chk" type="checkbox" value="yes"><br>
+ </blockquote>
+
+ <input type="submit" value="Send">
+
+</form>
+</body>
+</html>

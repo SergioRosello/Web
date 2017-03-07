@@ -1,0 +1,26 @@
+.button {
+    background-color: #3cc0e1;
+    font-weight: bold;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 5px;
+}
+
+.button:hover{
+    background-color: #e55252;
+}
+
+.Parrafo1{
+	font-family: 'Merriweather', serif;
+}
+
+.Parrafo2{
+	font-family: 'Caveat Brush', cursive;
+}
+
+.Parrafo3{
+	font-family: 'Indie Flower', cursive;
+}

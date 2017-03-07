@@ -1,0 +1,10 @@
+body{
+	background-image: url("css3.png");
+	background-position: top right;
+	background-repeat: no-repeat;
+	margin-right: 200px;
+}
+
+p{
+	width-right: 100px;
+}

@@ -1,0 +1,102 @@
+
+
+.container {
+	border: 1px solid black;
+	width: 900px;
+	margin: 0 auto;
+	padding: 0px 0px;
+}
+
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+.header {
+	padding-top: 10px;
+	float: left;
+	width: 100%;
+	height: 70px;
+	background-color: #f28500;
+	color: white;
+}
+
+.dropdownmenu{
+	background-color: #cccccc;
+}
+
+.breadcrumbs{
+	background-color: #EEE;
+	list-style-type: none;
+	color: #ccc;
+}
+
+.sections {
+	list-style-type: none;
+	float: left;
+	width: 200px;
+	height: 400px;
+	background-color: #eeeeee;
+}
+
+.sections li{
+	border-bottom: 1px solid black;
+	padding-left: 7px;
+}
+
+#titulo{
+	background-color: #aaa;
+}
+
+.main {
+
+}
+
+.footer {
+	height: 30px;
+	width: 100%;
+	clear: both;
+	background-color: #cccccc;
+	color: white;
+	text-align: center;
+}
+
+.dropdownmenu ul li {
+	border-right: 1px solid black;
+	display: inline-block;
+	position: relative;
+	margin-right: -3px;
+	padding: 15px 20px;
+	background: #ccc;
+	}
+.dropdownmenu ul li:hover {
+	background: #ccc;
+	}
+.dropdownmenu ul li ul {
+	position: absolute;
+	left: 0;
+	top: 50px;
+	display: none;
+	}
+.dropdownmenu ul li:hover ul {
+	display: block;
+	}
+.dropdownmenu ul li ul li {
+	border: 1px solid black;
+	background: #ccc;
+	display: block;
+	}
+.dropdownmenu ul li ul li:hover {
+	background: #eee;
+	}
+
+.breadcrumbs ul {
+	}
+
+
+.breadcrumbs ul li {
+	display: inline-block;
+	padding: 5px 7px;
+	background: no-repeat 0 url('arrow.png');
+	color: #ccc;
+	}
