@@ -65,8 +65,10 @@
 
 .cookie {
 	height: 60px;
-	position: fixed;
-	background-color: rgba(0,0,0,0.6);
+	position: absolute;
+	text-align: center;
+	background-color: rgba(0,0,0,0.4);
+	display: inline-block;
 	bottom: 0;
 	width: 100%;
 }
