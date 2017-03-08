@@ -61,6 +61,16 @@
 	text-align: center;
 }
 
+
+
+.cookie {
+	height: 60px;
+	position: fixed;
+	background-color: rgba(0,0,0,0.6);
+	bottom: 0;
+	width: 100%;
+}
+
 .dropdownmenu ul li {
 	border-right: 1px solid black;
 	display: inline-block;
@@ -68,30 +78,30 @@
 	margin-right: -3px;
 	padding: 15px 20px;
 	background: #ccc;
-	}
+}
 .dropdownmenu ul li:hover {
 	background: #ccc;
-	}
+}
 .dropdownmenu ul li ul {
 	position: absolute;
 	left: 0;
 	top: 50px;
 	display: none;
-	}
+}
 .dropdownmenu ul li:hover ul {
 	display: block;
-	}
+}
 .dropdownmenu ul li ul li {
 	border: 1px solid black;
 	background: #ccc;
 	display: block;
-	}
+}
 .dropdownmenu ul li ul li:hover {
 	background: #eee;
-	}
+}
 
 .breadcrumbs ul {
-	}
+}
 
 
 .breadcrumbs ul li {
@@ -99,4 +109,4 @@
 	padding: 5px 7px;
 	background: no-repeat 0 url('arrow.png');
 	color: #ccc;
-	}
+}
