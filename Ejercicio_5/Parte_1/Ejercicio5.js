@@ -1,26 +1,25 @@
 function validateForm() {
 	var x = document.forms["formulario"]["name"].value;
 	if (!x) {
-		alert("Debe rellenar el campo de texto");
 		document.forms["formulario"]["name"].focus();
+		alert("Debe rellenar el campo de texto");
 		return false;
 	}
 	return true;
 }
 
 
-function check{
-	var checkbox = document.forms["formulario"]["seleccion multiple"];
+function check(){
+	var checkbox = document.forms["formulario"]["seleccionMultiple"].options;
 
 	for (var i = 0, len = checkbox.length; i < len; i++) {
-		if (checkbox[i].checked) {
+		if (checkbox[i].selected) {
 			return true;
 		}
 	}
+	document.forms["formulario"]["seleccionMultiple"].focus();
 	alert("Debe elegir una de las opciones disponibles");
-	for (var i = 0, len = checkbox.length; i < len; i++) {
-		checkbox[i].focus();
-	}
+
 	return false;
 }
 
@@ -33,9 +32,8 @@ function checkRad(){
 			return true;
 		}
 	}
+	radios[0].focus();
 	alert("Debe marcar una de las opciones");
-	for (var i = 0, len = radios.length; i < len; i++) {
-		radios[i].focus();
-	}
+	
 	return false;
 }
