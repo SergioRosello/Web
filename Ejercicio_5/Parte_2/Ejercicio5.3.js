@@ -40,6 +40,7 @@ Cat.prototype.toString = function(){
 
 
 
+
 Dog.prototype = new Animal();
 
 Dog.prototype.speak = function() {
@@ -60,3 +61,4 @@ window.onload = function(){
 	console.log(cat.speak());
 	console.log(dog.speak());
 };
+
