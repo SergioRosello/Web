@@ -3,44 +3,60 @@ function Animal(name, eyeColor) {
 	this.eyeColor = eyeColor;
 };
 
-function Cat(){
+function Cat(name, eyeColor){
 	Animal.call(this, name, eyeColor);
 
 };
 
-function Dog(){
+function Dog(name, eyeColor){
 	Animal.call(this, name, eyeColor);
 
 };
 
 Animal.prototype.getName = function(){
-	return this.name;
+	console.log(this.name);
 };
 
 Animal.prototype.getEyeColor = function(){
-	return this.eyeColor;
+	console.log(this.eyeColor);
 };
 
 Animal.prototype.toString = function() {
 	return this.name + " " + this.eyeColor;
 };
 
+
+
+
+Cat.prototype = new Animal();
+
 Cat.prototype.speak = function() {
 	return "meow";
 };
+
+Cat.prototype.toString = function(){
+	return Animal.prototype.toString.call(this);
+}
+
+
+
+Dog.prototype = new Animal();
 
 Dog.prototype.speak = function() {
 	return "woof";
 };
 
+Dog.prototype.toString = function(){
+	return Animal.prototype.toString.call(this);
+}
 
 window.onload = function(){
 	var cat = new Cat("Siro", "brown");
 	var dog = new Dog("Niza", "brown");
 
-	cat.toString();
-	dog.toString();
+	console.log(cat.toString());
+	console.log(dog.toString());
 
-	cat.speak();
-	dog.speak();
+	console.log(cat.speak());
+	console.log(dog.speak());
 }
