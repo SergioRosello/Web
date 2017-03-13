@@ -1,42 +1,46 @@
-var Animal = (function(name, age){
-	var animal = function(name, eyeColor){
-		this.name = name;
-		this.eyeColor = eyeColor;
-	}
+function Animal(name, eyeColor) {
+	this.name = name;
+	this.eyeColor = eyeColor;
+};
 
+function Cat(){
+	Animal.call(this, name, eyeColor);
 
-	Animal(string name, String eyeColor){
-		this.name = name;
-		this.eyeColor = eyeColor;
-	}
+};
 
-	String getName(){
+function Dog(){
+	Animal.call(this, name, eyeColor);
 
-	}
+};
 
-	String getEyeColor(){
+Animal.prototype.getName = function(){
+	return this.name;
+};
 
-	}
+Animal.prototype.getEyeColor = function(){
+	return this.eyeColor;
+};
 
-	String toString(){
+Animal.prototype.toString = function() {
+	return this.name + " " + this.eyeColor;
+};
 
-	}
+Cat.prototype.speak = function() {
+	return "meow";
+};
+
+Dog.prototype.speak = function() {
+	return "woof";
 };
 
 
-var Padawan = (function() {
-    var padawan = function(name, age) {
-        this.name = name;
-        this.age = age;
-    };
+window.onload = function(){
+	var cat = new Cat("Siro", "brown");
+	var dog = new Dog("Niza", "brown");
 
-    padawan.prototype.skill = function() {
-        return this.age.toString().length;
-    };
+	cat.toString();
+	dog.toString();
 
-    padawan.prototype.forceAttuned = function() {
-        return false;
-    };
-
-    return padawan;
-}());
+	cat.speak();
+	dog.speak();
+}
