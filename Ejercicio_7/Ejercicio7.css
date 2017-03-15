@@ -12,8 +12,3 @@ h1 {
     width: 700px;
     list-style-type: none;
 }
-
-article h1 {
-    text-align: left;
-    border-bottom: 1px dotted #E3E3E3;
-}
