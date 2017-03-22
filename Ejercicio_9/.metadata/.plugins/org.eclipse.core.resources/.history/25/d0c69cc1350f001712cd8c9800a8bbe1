@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<form action="processForm1" method="post">
+		<label for="input">Information</label> <input type="com.u_tad.web.spring.FormService" name="input"
+			id="input"> <input type="submit">
+	</form>
+</body>
+</html>
