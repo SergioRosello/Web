@@ -1,7 +1,0 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<body>
-<p>"Output: "</p>
-<p th:text="${result.getInfo()}"></p>
-</body>
-</html>
