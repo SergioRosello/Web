@@ -11,11 +11,16 @@ import javax.persistence.Id;
 public class TablonDeAnuncios {
 
     public TablonDeAnuncios(String nombre, String asunto, String descripcion) {
-		super();
+		//super();
 		Nombre = nombre;
 		Asunto = asunto;
 		Descripcion = descripcion;
 	}
+    
+    public TablonDeAnuncios() {
+
+	}
+    
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
