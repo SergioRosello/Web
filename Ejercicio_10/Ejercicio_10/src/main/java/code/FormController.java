@@ -1,15 +1,21 @@
 package code;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class FormController {
 
-    @RequestMapping("/processForm1")
-    public ModelAndView process(@ModelAttribute FormService input) {
-        return new ModelAndView("result").addObject("result", input.getInput());
-    }
+	@Autowired
+	private TablonDeAnunciosRepository repo;
+
+	@RequestMapping("/")
+	public ModelAndView process() {
+		Iterable<TablonDeAnuncios> anuncios = repo.findAll();
+		return new ModelAndView("home").addObject("list", anuncios);
+	}
+	
+	
 }
