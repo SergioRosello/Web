@@ -2,6 +2,7 @@ package code;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -12,10 +13,19 @@ public class FormController {
 	private TablonDeAnunciosRepository repo;
 
 	@RequestMapping("/")
-	public ModelAndView process() {
+	public ModelAndView processHome() {
 		Iterable<TablonDeAnuncios> anuncios = repo.findAll();
 		return new ModelAndView("home").addObject("list", anuncios);
 	}
 	
+	@RequestMapping("new")
+	public ModelAndView processNew(@ModelAttribute TablonDeAnuncios tablonDeAnuncios){
+		return new ModelAndView("new").addObject("name", tablonDeAnuncios.getNombre()).addObject("subject", tablonDeAnuncios.getDescripcion()).addObject("comment", tablonDeAnuncios.getAsunto());
+	}
+	
+	@RequestMapping("insert")
+	public ModelAndView processInsert(){
+		return new ModelAndView("insert");
+	}
 	
 }
