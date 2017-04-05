@@ -33,6 +33,14 @@ public class FormController {
 	public ModelAndView processInsert() {
 		return new ModelAndView("new");
 	}
+	
+	@RequestMapping("/show")
+	public ModelAndView processShow(@RequestParam long ID){
+		TablonDeAnuncios anuncios = new TablonDeAnuncios();
+		anuncios = repo.findOne(ID);
+		ModelAndView modelAndView = new ModelAndView("show").addObject("anuncio", anuncios);
+		return modelAndView;
+	}
 
 }
 

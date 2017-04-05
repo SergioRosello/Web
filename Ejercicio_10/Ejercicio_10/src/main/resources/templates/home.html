@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-<h1>Bulletin board</h1>
+	<h1>Bulletin board</h1>
 
 	<p th:each="anuncio : ${anuncios}">
-		<h4>ID:</h4>
-		<div th:text="${anuncio.Nombre}"></div>
-		<h4>Title:</h4>
-		<div th:text="${anuncio.Asunto}"></div>
-		<h4>Content:</h4>
-		<div th:text="${anuncio.Descripcion}"></div>
-		<div>---------------------------------------------------------</div>
+	    <a th:href="@{/show(ID=${anuncio.id})}"><span th:text="${anuncio.Nombre} + ' ' + ${anuncio.Asunto}"> </span></a>
 	</p>
 
 
-<form action="new">
-    <input type="submit" value="New Announcement" />
-</form>
-<!--  <p th:text="${result}"></p>  -->
+	<form action="new">
+		<input type="submit" value="New Announcement" />
+	</form>
 </body>
 </html>
