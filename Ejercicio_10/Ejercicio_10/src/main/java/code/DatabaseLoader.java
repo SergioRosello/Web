@@ -13,6 +13,7 @@ public class DatabaseLoader {
 
     @PostConstruct
     private void initDatabase() {
+    	/*
         // Create
         repository.save(new TablonDeAnuncios("Nota1", "Prueba", "Prueba de la nota1"));
         repository.save(new TablonDeAnuncios("Nota2", "Prueba2", "Prueba de la segunda nota (nota2)"));
@@ -33,5 +34,6 @@ public class DatabaseLoader {
         long firstId = repository.findAll().iterator().next().getId();
         repository.delete(firstId);
         System.out.println(repository.count());
+        */
     }
 }
