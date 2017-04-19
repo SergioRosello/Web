@@ -12,8 +12,9 @@
     <div sec:authorize="hasRole('ROLE_ADMIN')">
         <a th:href="@{/new}">New Announcement</a>
     </div>
-	<form action="new">
-		<input type="submit" value="New Announcement" />
-	</form>
+    
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="logout" />
+    </form>
 </body>
 </html>

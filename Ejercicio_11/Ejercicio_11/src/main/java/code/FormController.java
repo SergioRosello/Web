@@ -14,15 +14,21 @@ public class FormController {
 
 	@Autowired
 	private TablonDeAnunciosRepository repo;
-	
+
 	@RequestMapping("/")
+	public ModelAndView processLogin() {
+        return new ModelAndView("login");
+	}
+	
+	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
+	@RequestMapping("/home")
 	public ModelAndView processHome(Model model) {
 		model.addAttribute("anuncios", repo.findAll());
 		Iterable<TablonDeAnuncios> anuncios = repo.findAll();
 		return new ModelAndView("home").addObject("list", anuncios);
 	}
 
-	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
+	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping("/insert")
 	public ModelAndView processNew(@RequestParam String name, @RequestParam String subject,
 			@RequestParam String Comment) {
@@ -32,7 +38,7 @@ public class FormController {
 		return modelAndView;
 	}
 
-	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
+	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping("/new")
 	public ModelAndView processInsert() {
 		return new ModelAndView("new");
