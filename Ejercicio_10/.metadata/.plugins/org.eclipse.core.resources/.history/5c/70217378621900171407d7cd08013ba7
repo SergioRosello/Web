@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>New announcement</h1>
+	<form action="insert">
+		<label for="input">Name</label>
+			<input type="text" name="name" id="name"></input>
+		<label for="input">subject</label>
+			<input type="text" name="subject" id="subject"></input>
+		<label for="input">Comment</label>
+			<input type="text" name="Comment" id="Comment"></input>
+		<input type="submit" value="Enviar"></input>
+	</form>
+</body>
+</html>

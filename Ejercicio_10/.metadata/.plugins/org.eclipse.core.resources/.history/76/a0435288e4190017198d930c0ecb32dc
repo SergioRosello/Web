@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<h1>Bulletin board</h1>
+
+	<p th:each="anuncio : ${anuncios}">
+	<form action="show">
+	    <p th:text="${anuncio.Nombre}, ${anuncio.Asunto}"> <a href="/show" ></a></p>
+	</form>
+	</p>
+
+
+	<form action="new">
+		<input type="submit" value="New Announcement" />
+	</form>
+</body>
+</html>
