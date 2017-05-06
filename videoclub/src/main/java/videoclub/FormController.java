@@ -1,0 +1,67 @@
+package videoclub;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class FormController {
+
+	@Autowired
+	private FilmRepository repo;
+
+	@RequestMapping("/")
+	public ModelAndView processLogin() {
+        return new ModelAndView("login");
+	}
+	
+	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
+	@RequestMapping("/home")
+	public ModelAndView processHome(Model model) {
+		model.addAttribute("anuncios", repo.findAll());
+		Iterable<Film> anuncios = repo.findAll();
+		return new ModelAndView("home").addObject("list", anuncios);
+	}
+
+	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
+	@RequestMapping("/search")
+	public ModelAndView processSearch() {
+		Film film = new Film();
+		ModelAndView modelAndView = new ModelAndView("search").addObject("Film", film);
+		return modelAndView;
+	}
+	/*
+	@Secured({ "ROLE_ADMIN" })
+	@RequestMapping("/insert")
+	public ModelAndView processNew(@RequestParam String name, @RequestParam String subject,
+			@RequestParam String Comment) {
+		Film film = new Film(name);
+		repo.save(film);
+		ModelAndView modelAndView = new ModelAndView("insert");
+		return modelAndView;
+	}
+
+	@Secured({ "ROLE_ADMIN" })
+	@RequestMapping("/new")
+	public ModelAndView processInsert() {
+		return new ModelAndView("new");
+	}
+	*/
+	
+	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
+	@RequestMapping("/show")
+	public ModelAndView processShow(@RequestParam long ID){
+		Film film = new Film();
+		film = repo.findOne(ID);
+		ModelAndView modelAndView = new ModelAndView("show").addObject("anuncio", film);
+		return modelAndView;
+	}
+
+}
+
+// http://jvmhub.com/2015/08/09/spring-boot-with-thymeleaf-tutorial-part-3-spring-data-jpa/
