@@ -32,8 +32,7 @@ public class FormController {
 	@RequestMapping("/search")
 	public ModelAndView processSearch() {
 		Film film = new Film();
-		ModelAndView modelAndView = new ModelAndView("search").addObject("Film", film);
-		return modelAndView;
+		return new ModelAndView("search").addObject("Film", film);
 	}
 	/*
 	@Secured({ "ROLE_ADMIN" })
