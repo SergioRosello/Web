@@ -14,7 +14,11 @@ public class FormController {
 
 	@Autowired
 	private FilmRepository repo;
+	
+	@Autowired
+	private UserRepository userRepo;
 
+	//TODO: Logout al parecer, no funciona...
 	@RequestMapping("/")
 	public ModelAndView processLogin() {
         return new ModelAndView("login");
@@ -24,15 +28,31 @@ public class FormController {
 	@RequestMapping("/home")
 	public ModelAndView processHome(Model model) {
 		model.addAttribute("anuncios", repo.findAll());
-		Iterable<Film> anuncios = repo.findAll();
-		return new ModelAndView("home").addObject("list", anuncios);
+		return new ModelAndView("home");
 	}
 
 	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
 	@RequestMapping("/search")
 	public ModelAndView processSearch() {
-		Film film = new Film();
-		return new ModelAndView("search").addObject("Film", film);
+		Iterable<Film> films = repo.findAll();
+		return new ModelAndView("search").addObject("Film", films);
+	}
+	
+	@Secured({ "ROLE_ADMIN" })
+	@RequestMapping("/purchase")
+	public ModelAndView processPurchase() {
+		//Llamada al servicio REST (OMBd)
+		//Parsear la respuesta con Gson
+		//Almacenar la respuesta en nuestra BBDD
+		//Film film = new Film();
+		return new ModelAndView("purchase");
+	}
+	
+	@Secured({ "ROLE_ADMIN" })
+	@RequestMapping("/users")
+	public ModelAndView processUsers() {
+		Iterable<User> users = userRepo.findAll();
+        return new ModelAndView("users").addObject("Film", users);
 	}
 	/*
 	@Secured({ "ROLE_ADMIN" })
