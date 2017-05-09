@@ -13,6 +13,9 @@ public class DatabaseLoader {
 	
     @Autowired
     private UserRepository userRepository;
+    
+    @Autowired
+    private FilmRepository filmRepository;
 
     @PostConstruct
     private void initDatabase() {
@@ -28,6 +31,9 @@ public class DatabaseLoader {
                 new SimpleGrantedAuthority("ROLE_ADMIN") };
         userRepository.save(new User("roberto", "bleh", Arrays.asList(adminRoles)));
         userRepository.save(new User("sergio", "hola", Arrays.asList(adminRoles)));
+        
+        //Adding some films
+        filmRepository.save(new Film("The martian"));
     }
 
 }

@@ -14,7 +14,7 @@
 	<form th:action="@{/purchase}" action="/action_page.php" method="post">
 	<div class="form-group">
 		<label for="title">Film title:</label>
-		<input type="text" class="form-control" id="title" placeholder="Enter film title" name="film title" /><br />
+		<input type="text" class="form-control" id="title" placeholder="Enter film title" name="title" /><br />
 		<input type="submit" class="btn btn-default" value="purchase" /><br />
 	</div>
 	</form>
@@ -22,5 +22,12 @@
 		<a href="/home">Back to home</a>
 	</p>
 </div>
+	<p th:each="film : ${films}">
+	    <a th:href="@{/purchase(ID=${film})}"><span th:text="${film}"> </span></a>
+	</p>
+
+	<p th:if="${verification}">
+		<span th:text="${verification}"></span>
+	</p>
 </body>
 </html>

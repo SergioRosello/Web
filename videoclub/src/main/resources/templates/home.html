@@ -33,6 +33,10 @@
     <form th:action="@{/users}" sec:authorize="hasRole('ROLE_ADMIN')" method="post">
         <input type="submit" class="btn btn-default" id="users" value="manage Users" /><br />
     </form>
+    
+    <form th:action="@{/watch}" method="post">
+        <input type="submit" class="btn btn-default" id="watch" value="watch movie" /><br />
+    </form>
 </div>
 </body>
 </html>

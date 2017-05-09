@@ -28,6 +28,10 @@ public class Film {
 
   public Film() {
   }
+  
+  public Film(String title){
+	  this.title = title;
+  }
 
   public String gettitle() {
     return title;

@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Search for a film!</title>
-  <meta charset="utf-8"></meta>
-  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Search for a film!</title>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container">
-	<h1>Search by name of film:</h1>
-	<form th:action="@{/search}" action="/action_page.php" method="post">
-	<div class="form-group">
-		<label for="title">Film title:</label>
-		<input type="text" class="form-control" id="title" placeholder="Enter film title" name="film title" /><br />
-		<input type="submit" class="btn btn-default" value="search" /><br />
+	<div class="container">
+		<h1>Search by name of film:</h1>
+		<form th:action="@{/search}" action="/action_page.php" method="post">
+			<div class="form-group">
+				<label for="title">Film title:</label> <input type="text"
+					class="form-control" id="title" placeholder="Enter film title"
+					name="film title" /><br /> <input type="submit"
+					class="btn btn-default" value="search" /><br />
+			</div>
+		</form>
+		<p>
+			<a href="/search">Back to home</a>
+		</p>
 	</div>
-		
-	</form>
-	<p>
-		<a href="/home">Back to home</a>
+	<p th:each="film : ${films}">
+		<a th:href="@{/watch(ID=${film.Title})}"><span th:text="${film.Title}"></span></a>
 	</p>
-</div>
+
 </body>
 </html>
