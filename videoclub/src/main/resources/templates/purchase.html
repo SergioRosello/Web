@@ -23,10 +23,10 @@
 		<form th:action="@{/purchase}" method="post">
 			<div class="form-group">
 				<label for="title">Film title: (required)</label>
-				<input type="text" class="form-control" id="title" placeholder="Enter film title (required)" name="title" /><br />
+				<input type="text" class="form-control" id="title" placeholder="Enter film title (required)" name="title" required="required"/><br />
 				
 				<label for="title">Film Content: (required)</label>
-				<input type="text" class="form-control" id="content" placeholder="Enter film content (required)" name="content" /><br />
+				<input type="text" class="form-control" id="content" placeholder="Enter film content (required)" name="content" required="required"/><br />
 				
 				<label for="title">Film Plot:</label>
 				<input type="text" class="form-control" id="plot" placeholder="Enter film plot" name="plot" /><br />

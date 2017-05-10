@@ -49,7 +49,7 @@ public class FormController {
 		}
 		Film films = filmRepo.findByTitle(title);
 		
-		model.addAttribute("films", films.gettitle());
+		model.addAttribute("films", films);
 		return new ModelAndView("search");
 	}
 	
@@ -84,6 +84,9 @@ public class FormController {
 		if(actors == null || actors == "") film.setActors(result.getActors()); 					else film.setActors(actors);
 		if(poster == null || poster == "") film.setPoster(result.getPoster()); 					else film.setPoster(poster);
 		if(imdbRating == null || imdbRating == "") film.setImdbRating(result.getImdbRating()); 	else film.setImdbRating(imdbRating);
+		
+		//TODO: Set a default image if none is provided.
+		//if(film.getPoster() == null || film.getPoster() == "") film.setPoster("http://placehold.it/150x150");
 		
 		//Guarda en la BBDD H2
 		filmRepo.save(film);

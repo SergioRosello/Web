@@ -25,15 +25,21 @@
 		<p>
 			<a href="/home">Back to home</a>
 		</p>
-		<p th:each="film : ${films}">
-		<a th:href="@{/watch(film=${film})}"><span th:text="${film}"></span></a>
-	</p>
-			<div th:each="film : ${films}" class="panel panel-primary">
-			<div class="panel-body">You have purchased:</div>
-			<div class="panel-footer">Prueba: </div>
-		</div>
+	<div class="column">
+		<div th:each="film : ${films}" >
+			<div class="col-md-4">
+			<a th:href="@{/watch(film=${film})}">
+			<div class="panel panel-success" style="height: 590px">
+					<div class="panel-heading" th:text="${film.Title}"></div>
+					<div class="panel-body">
+						<img th:src="${film.Poster}" alt="" class="img-responsive center-block" />
+					</div>
+					<div class="panel-footer" th:text="${film.plot}"></div>
+			</div>
+			</a>
+				</div>
+			</div>
 	</div>
-
-
+	</div>
 </body>
 </html>
