@@ -32,8 +32,6 @@ public class DatabaseLoader {
         userRepository.save(new User("roberto", "bleh", Arrays.asList(adminRoles)));
         userRepository.save(new User("sergio", "hola", Arrays.asList(adminRoles)));
         
-        //Adding some films
-        filmRepository.save(new Film("The martian"));
     }
 
 }

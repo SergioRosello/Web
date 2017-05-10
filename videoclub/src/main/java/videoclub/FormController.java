@@ -42,24 +42,30 @@ public class FormController {
 	//Se muestra
 	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
 	@RequestMapping("/search")
-	public ModelAndView processSearch(@RequestParam(value = "title", required=false) String title) {
-		if (title == null){
+	public ModelAndView processSearch(Model model, @RequestParam(value = "title", required=false) String title) {
+		if (title == null || title == ""){
 			Iterable<Film> films = filmRepo.findAll();
 			return new ModelAndView("search").addObject("films", films);
 		}
-		//TODO: Como buscar solo una pelicula (findOne busca por ID (que no tenemos))
 		Film films = filmRepo.findByTitle(title);
 		
-		//Preguntar si hay que parsear los datos de film para mostrarlos por HTML o  no es necesario. variables privadas
-		
-		//model.addAttribute("films", result);
-		return new ModelAndView("search").addObject("Film", films);
+		model.addAttribute("films", films.gettitle());
+		return new ModelAndView("search");
 	}
 	
 	//Se muestra
 	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping("/purchase")
-	public ModelAndView processPurchase(Model model, @RequestParam(value = "title", required=false) String title) {
+	public ModelAndView processPurchase(Model model,
+			@RequestParam(value = "title", required=false) String title,
+			@RequestParam(value = "content", required=false) String content,
+			@RequestParam(value = "plot", required=false) String plot,
+			@RequestParam(value = "year", required=false) String year,
+			@RequestParam(value = "director", required=false) String director,
+			@RequestParam(value = "genre", required=false) String genre,
+			@RequestParam(value = "actors", required=false) String actors,
+			@RequestParam(value = "poster", required=false) String poster,
+			@RequestParam(value = "imdbRating", required=false) String imdbRating) {
 		if (title == null){
 			return new ModelAndView("purchase");
 		}
@@ -67,8 +73,23 @@ public class FormController {
 		RestAdapter adapter = new RestAdapter.Builder().setEndpoint("http://www.omdbapi.com").build();
 		OMDbService service = adapter.create(OMDbService.class);
 		Film result = service.getFilm(title);
-		filmRepo.save(result);
-		String verification = "You have purchased: " + result.gettitle();
+		Film film = new Film();
+		
+		film.setTitle(title);
+		film.setContent(content);
+		if(plot == null || plot == "") film.setPlot(result.getPlot()); 							else film.setPlot(plot);
+		if(year == null || year == "") film.setYear(result.getYear()); 							else film.setYear(year);
+		if(director == null || director == "") film.setDirector(result.getDirector()); 			else film.setDirector(director);
+		if(genre == null || genre == "") film.setGenre(result.getGenre()); 						else film.setGenre(genre);
+		if(actors == null || actors == "") film.setActors(result.getActors()); 					else film.setActors(actors);
+		if(poster == null || poster == "") film.setPoster(result.getPoster()); 					else film.setPoster(poster);
+		if(imdbRating == null || imdbRating == "") film.setImdbRating(result.getImdbRating()); 	else film.setImdbRating(imdbRating);
+		
+		//Guarda en la BBDD H2
+		filmRepo.save(film);
+		
+		//Verificacion de compra
+		String verification = film.getTitle();
 		
 		model.addAttribute("verification", verification);
 		return new ModelAndView("purchase");
@@ -85,9 +106,11 @@ public class FormController {
 	//TODO: No se muestra.
 	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
 	@RequestMapping("/watch")
-	public ModelAndView processWatch(){
+	public ModelAndView processWatch(Model model, @RequestParam(value = "film") String title){
 		Film film = new Film();
-		return new ModelAndView("watch").addObject("film", film);
+		film = filmRepo.findByTitle(title);
+		model.addAttribute("film", film);
+		return new ModelAndView("watch");
 	}
 
 	

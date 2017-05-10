@@ -10,106 +10,128 @@ import com.google.gson.annotations.SerializedName;
 @Entity
 public class Film {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 
-  @SerializedName("Title")
-  private String title;
+	@SerializedName("Title")
+	private String title;
 
-  private String Year;
-  private String Director;
-  private String Actors;
-  private String Poster;
-  private String Plot;
-  private String imdbRating;
-  private Boolean Response;
-  private String Error;
+	private String Year;
+	private String Director;
+	private String Content;
+	private String Actors;
+	private String Genre;
+	private String Poster;
+	private String Plot;
+	private String imdbRating;
+	private Boolean Response;
+	private String Error;
 
-  public Film() {
-  }
-  
-  public Film(String title){
-	  this.title = title;
-  }
+	public Film() {
+	}
 
-  public String gettitle() {
-    return title;
-  }
+	public Film(String title) {
+		this.title = title;
+	}
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
+	public String gettitle() {
+		return title;
+	}
 
-  public String getYear() {
-    return Year;
-  }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-  public void setYear(String year) {
-    this.Year = year;
-  }
+	public String getYear() {
+		return Year;
+	}
 
-  public String getDirector() {
-    return Director;
-  }
+	public void setYear(String year) {
+		this.Year = year;
+	}
 
-  public void setDirector(String director) {
-    this.Director = director;
-  }
+	public String getDirector() {
+		return Director;
+	}
 
-  public String getActors() {
-    return Actors;
-  }
+	public void setDirector(String director) {
+		this.Director = director;
+	}
 
-  public void setActors(String actors) {
-    this.Actors = actors;
-  }
+	public String getContent() {
+		return Content;
+	}
 
-  public String getPoster() {
-    return Poster;
-  }
+	public void setContent(String content) {
+		Content = content;
+	}
 
-  public void setPoster(String poster) {
-    this.Poster = poster;
-  }
+	public String getActors() {
+		return Actors;
+	}
 
-  public String getPlot() {
-    return Plot;
-  }
+	public void setActors(String actors) {
+		this.Actors = actors;
+	}
 
-  public void setPlot(String plot) {
-    this.Plot = plot;
-  }
+	public String getGenre() {
+		return Genre;
+	}
 
-  public String getImdbrating() {
-    return imdbRating;
-  }
+	public void setGenre(String genre) {
+		Genre = genre;
+	}
 
-  public void setImdbrating(String imdbRating) {
-    this.imdbRating = imdbRating;
-  }
+	public String getImdbRating() {
+		return imdbRating;
+	}
 
-  public Boolean getResponse() {
-    return Response;
-  }
+	public void setImdbRating(String imdbRating) {
+		this.imdbRating = imdbRating;
+	}
 
-  public void setResponse(Boolean response) {
-    this.Response = response;
-  }
+	public String getTitle() {
+		return title;
+	}
 
-  public String getError() {
-    return Error;
-  }
+	public String getPoster() {
+		return Poster;
+	}
 
-  @Override
-  public String toString() {
-    return "Film [id=" + id + ", title=" + title + ", Year=" + Year + ", Director=" + Director
-        + ", Actors=" + Actors + ", Poster=" + Poster + ", Plot=" + Plot + ", imdbRating="
-        + imdbRating + ", Response=" + Response + ", Error=" + Error + "]";
-  }
+	public void setPoster(String poster) {
+		this.Poster = poster;
+	}
 
-  public void setError(String error) {
-    this.Error = error;
-  }
+	public String getPlot() {
+		return Plot;
+	}
+
+	public void setPlot(String plot) {
+		this.Plot = plot;
+	}
+
+	public Boolean getResponse() {
+		return Response;
+	}
+
+	public void setResponse(Boolean response) {
+		this.Response = response;
+	}
+
+	public String getError() {
+		return Error;
+	}
+
+	@Override
+	public String toString() {
+		return "Film [id=" + id + ", title=" + title + ", Year=" + Year + ", Director=" + Director + ", Actors="
+				+ Actors + ", Poster=" + Poster + ", Plot=" + Plot + ", imdbRating=" + imdbRating + ", Response="
+				+ Response + ", Error=" + Error + "]";
+	}
+
+	public void setError(String error) {
+		this.Error = error;
+	}
 
 }

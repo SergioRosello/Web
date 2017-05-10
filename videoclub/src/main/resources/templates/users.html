@@ -25,12 +25,6 @@
 
 		<form th:action="@{/users}" sec:authorize="hasRole('ROLE_ADMIN')"
 			method="post">
-			<input type="submit" class="btn btn-default" id="dropUser"
-				value="dropUser" /><br />
-		</form>
-
-		<form th:action="@{/users}" sec:authorize="hasRole('ROLE_ADMIN')"
-			method="post">
 			<input type="submit" class="btn btn-default" id="modifyUser"
 				value="modifyUser" /><br />
 		</form>
@@ -43,13 +37,6 @@
 		<p>
 			<a href="/home">Back to home</a>
 		</p>
-
-		<p th:each="film : ${films}">
-			<a th:href="@{/show(ID=${film.id})}"> <span
-				th:text="${film.title} + ' ' + ${film.Year}"> </span>
-			</a>
-		</p>
-		<br/>
 
 	</div>
 </body>

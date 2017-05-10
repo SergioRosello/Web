@@ -18,17 +18,22 @@
 			<div class="form-group">
 				<label for="title">Film title:</label> <input type="text"
 					class="form-control" id="title" placeholder="Enter film title"
-					name="film title" /><br /> <input type="submit"
+					name="title" /><br /> <input type="submit"
 					class="btn btn-default" value="search" /><br />
 			</div>
 		</form>
 		<p>
-			<a href="/search">Back to home</a>
+			<a href="/home">Back to home</a>
 		</p>
-	</div>
-	<p th:each="film : ${films}">
-		<a th:href="@{/watch(ID=${film.Title})}"><span th:text="${film.Title}"></span></a>
+		<p th:each="film : ${films}">
+		<a th:href="@{/watch(film=${film})}"><span th:text="${film}"></span></a>
 	</p>
+			<div th:each="film : ${films}" class="panel panel-primary">
+			<div class="panel-body">You have purchased:</div>
+			<div class="panel-footer">Prueba: </div>
+		</div>
+	</div>
+
 
 </body>
 </html>
