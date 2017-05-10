@@ -12,13 +12,10 @@
 <body>
 <div class="container">
 
-	<h1>Bulletin board</h1>
+	<h1>Videoclub</h1>
 
-	<p th:each="film : ${films}">
-	    <a th:href="@{/show(ID=${film.id})}"><span th:text="${film.title} + ' ' + ${film.year}"> </span></a>
-	</p>
-    
-    <form th:action="@{/logout}" action="/action_page.php" method="post">
+<div class="row">
+    <form th:action="@{/logout}" method="post">
         <input type="submit" class="btn btn-default" id="submit" value="logout" /><br />
     </form>
     
@@ -33,6 +30,7 @@
     <form th:action="@{/users}" sec:authorize="hasRole('ROLE_ADMIN')" method="post">
         <input type="submit" class="btn btn-default" id="users" value="manage Users" /><br />
     </form>
+</div>
 
 </div>
 </body>

@@ -14,7 +14,7 @@
 <body>
 	<div class="container">
 		<h1>Search by name of film:</h1>
-		<form th:action="@{/search}" action="/action_page.php" method="post">
+		<form th:action="@{/search}" method="post">
 			<div class="form-group">
 				<label for="title">Film title:</label> <input type="text"
 					class="form-control" id="title" placeholder="Enter film title"
@@ -28,7 +28,7 @@
 	<div class="column">
 		<div th:each="film : ${films}" >
 			<div class="col-md-4">
-			<a th:href="@{/watch(film=${film})}">
+			<a th:href="@{/watch(film=${film.Title})}">
 			<div class="panel panel-success" style="height: 590px">
 					<div class="panel-heading" th:text="${film.Title}"></div>
 					<div class="panel-body">

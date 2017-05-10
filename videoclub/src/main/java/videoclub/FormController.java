@@ -88,6 +88,8 @@ public class FormController {
 		//TODO: Set a default image if none is provided.
 		//if(film.getPoster() == null || film.getPoster() == "") film.setPoster("http://placehold.it/150x150");
 		
+		//TODO: Prevent same films
+		
 		//Guarda en la BBDD H2
 		filmRepo.save(film);
 		
