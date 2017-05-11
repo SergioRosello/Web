@@ -170,7 +170,7 @@ public class FormController {
 			user.setEmail(email);
 			}
 		userRepo.save(user);
-		model.addAttribute("verification", name);
+		model.addAttribute("verification", originalName);
         return new ModelAndView("success");
 	}
 

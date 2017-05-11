@@ -13,17 +13,17 @@
 </head>
 <body>
 	<div class="container">
-		<div class="column">
-			<div class="col-xs-12">
-				<p class="text-right">
-					<a href="/home">Home</a>
-				</p>
+		<div class="jumbotron">
+			<div th:if="${verification}" class="panel panel-primary">
+				<div class="panel-body">You have modified:</div>
+				<div class="panel-footer">
+					<span th:text="${verification}"></span>
+				</div>
 			</div>
-		</div>
-		<div th:if="${verification}" class="panel panel-primary">
-			<div class="panel-body">You have modified:</div>
-			<div class="panel-footer">
-				<span th:text="${verification}"></span>
+			<div class="column">
+				<div class="col-xs-12">
+					<a class="btn btn-primary btn-block" role="button" href="/home">Home</a>
+				</div>
 			</div>
 		</div>
 	</div>
