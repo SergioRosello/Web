@@ -13,6 +13,14 @@
 </head>
 <body>
 	<div class="container">
+		<div class="column">
+			<div class="col-xs-12">
+				<p class="text-right">
+					<a href="/home">Home</a>
+				</p>
+			</div>
+		</div>
+
 		<h1>Purchase film:</h1>
 		<div th:if="${verification}" class="panel panel-primary">
 			<div class="panel-body">You have purchased:</div>
@@ -22,39 +30,33 @@
 		</div>
 		<form th:action="@{/purchase}" method="post">
 			<div class="form-group">
-				<label for="title">Film title: (required)</label>
-				<input type="text" class="form-control" id="title" placeholder="Enter film title (required)" name="title" required="required"/><br />
-				
-				<label for="title">Film Content: (required)</label>
-				<input type="text" class="form-control" id="content" placeholder="Enter film content (required)" name="content" required="required"/><br />
-				
-				<label for="title">Film Plot:</label>
-				<input type="text" class="form-control" id="plot" placeholder="Enter film plot" name="plot" /><br />
-				
-				<label for="title">Film Year:</label>
-				<input type="text" class="form-control" id="year" placeholder="Enter film year" name="year" /><br />
-				
-				<label for="title">Film Director:</label>
-				<input type="text" class="form-control" id="director" placeholder="Enter film director" name="director" /><br />
-				
-				<label for="title">Film Genre:</label>
-				<input type="text" class="form-control" id="genre" placeholder="Enter film genre" name="genre" /><br />
-				
-				<label for="title">Film Actors </label>
-				<input type="text" class="form-control" id="actors" placeholder="Enter film actors" name="actors" /><br />
-				
-				<label for="title">Film Poster:</label>
-				<input type="text" class="form-control" id="poster" placeholder="Enter film poster" name="poster" /><br />
-				
-				<label for="title">Film Rating:</label>
-				<input type="text" class="form-control" id="imdbRating" placeholder="Enter film IMDB rating" name="imdbRating" /><br />
-				
-				<input type="submit" class="btn btn-default" value="purchase" /><br />
+				<label for="title">Film title: (required)</label> <input type="text"
+					class="form-control" id="title"
+					placeholder="Enter film title (required)" name="title"
+					required="required" /><br /> <label for="title">Film
+					Content: (required)</label> <input type="text" class="form-control"
+					id="content" placeholder="Enter film content (required)"
+					name="content" required="required" /><br /> <label for="title">Film
+					Plot:</label> <input type="text" class="form-control" id="plot"
+					placeholder="Enter film plot" name="plot" /><br /> <label
+					for="title">Film Year:</label> <input type="text"
+					class="form-control" id="year" placeholder="Enter film year"
+					name="year" /><br /> <label for="title">Film Director:</label> <input
+					type="text" class="form-control" id="director"
+					placeholder="Enter film director" name="director" /><br /> <label
+					for="title">Film Genre:</label> <input type="text"
+					class="form-control" id="genre" placeholder="Enter film genre"
+					name="genre" /><br /> <label for="title">Film Actors </label> <input
+					type="text" class="form-control" id="actors"
+					placeholder="Enter film actors" name="actors" /><br /> <label
+					for="title">Film Poster:</label> <input type="text"
+					class="form-control" id="poster" placeholder="Enter film poster"
+					name="poster" /><br /> <label for="title">Film Rating:</label> <input
+					type="text" class="form-control" id="imdbRating"
+					placeholder="Enter film IMDB rating" name="imdbRating" /><br /> <input
+					type="submit" class="btn btn-default" value="purchase" /><br />
 			</div>
 		</form>
-		<p>
-			<a href="/home">Back to home</a>
-		</p>
 	</div>
 </body>
 </html>

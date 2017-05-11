@@ -13,6 +13,14 @@
 </head>
 <body>
 	<div class="container">
+		<div class="column">
+			<div class="col-xs-12">
+				<p class="text-right">
+					<a href="/home">Home</a>
+				</p>
+			</div>
+		</div>
+
 		<h1>Search by name of film:</h1>
 		<form th:action="@{/search}" method="post">
 			<div class="form-group">
@@ -22,24 +30,22 @@
 					class="btn btn-default" value="search" /><br />
 			</div>
 		</form>
-		<p>
-			<a href="/home">Back to home</a>
-		</p>
-	<div class="column">
-		<div th:each="film : ${films}" >
-			<div class="col-md-4">
-			<a th:href="@{/watch(film=${film.Title})}">
-			<div class="panel panel-success" style="height: 590px">
-					<div class="panel-heading" th:text="${film.Title}"></div>
-					<div class="panel-body">
-						<img th:src="${film.Poster}" alt="" class="img-responsive center-block" />
-					</div>
-					<div class="panel-footer" th:text="${film.plot}"></div>
-			</div>
-			</a>
+		<div class="column">
+			<div th:each="film : ${films}">
+				<div class="col-md-4">
+					<a th:href="@{/watch(film=${film.Title})}">
+						<div class="panel panel-success" style="height: 590px">
+							<div class="panel-heading" th:text="${film.Title}"></div>
+							<div class="panel-body">
+								<img th:src="${film.Poster}" alt=""
+									class="img-responsive center-block" />
+							</div>
+							<div class="panel-footer" th:text="${film.plot}"></div>
+						</div>
+					</a>
 				</div>
 			</div>
-	</div>
+		</div>
 	</div>
 </body>
 </html>

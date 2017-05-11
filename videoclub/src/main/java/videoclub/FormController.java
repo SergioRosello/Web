@@ -1,7 +1,11 @@
 package videoclub;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,14 +28,12 @@ public class FormController {
 	@Autowired
 	private UserRepository userRepo;
 	
-	//Se muestra
 	//TODO: Logout al parecer, no funciona...
 	@RequestMapping("/")
 	public ModelAndView processLogin() {
         return new ModelAndView("login");
 	}
 	
-	//Se muestra
 	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
 	@RequestMapping("/home")
 	public ModelAndView processHome(Model model) {
@@ -39,7 +41,6 @@ public class FormController {
 		return new ModelAndView("home");
 	}
 	
-	//Se muestra
 	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
 	@RequestMapping("/search")
 	public ModelAndView processSearch(Model model, @RequestParam(value = "title", required=false) String title) {
@@ -53,7 +54,6 @@ public class FormController {
 		return new ModelAndView("search");
 	}
 	
-	//Se muestra
 	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping("/purchase")
 	public ModelAndView processPurchase(Model model,
@@ -100,20 +100,22 @@ public class FormController {
 		return new ModelAndView("purchase");
 	}
 	
-	//Se muestra
 	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping("/users")
-	public ModelAndView processUsers(Model model, @RequestParam(value = "name", required=false) String name) {
+	public ModelAndView processUsers(Model model,
+			@RequestParam(value = "user", required=false) String name) {
 		if (name == null || name == ""){
 			Iterable<User> users = userRepo.findAll();
 			return new ModelAndView("users").addObject("users", users);
 		}
-		User user = userRepo.findByUser(name);
-		model.addAttribute("user", user);
-        return new ModelAndView("users");
+		User userToDelete = new User();
+		userToDelete = userRepo.findByUser(name);
+		model.addAttribute("verification", name);
+		userRepo.delete(userToDelete);
+		Iterable<User> users = userRepo.findAll();
+		return new ModelAndView("users").addObject("users", users);
 	}
 	
-	//TODO: No se muestra.
 	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
 	@RequestMapping("/watch")
 	public ModelAndView processWatch(Model model, @RequestParam(value = "film") String title){
@@ -123,34 +125,53 @@ public class FormController {
 		return new ModelAndView("watch");
 	}
 
-	
-	/*
 	@Secured({ "ROLE_ADMIN" })
-	@RequestMapping("/insert")
-	public ModelAndView processNew(@RequestParam String name, @RequestParam String subject,
-			@RequestParam String Comment) {
-		Film film = new Film(name);
-		repo.save(film);
-		ModelAndView modelAndView = new ModelAndView("insert");
-		return modelAndView;
+	@RequestMapping("/adduser")
+	public ModelAndView processAddUsers(Model model,
+			@RequestParam(value = "name", required=false) String name,
+			@RequestParam(value = "password", required=false) String password,
+			@RequestParam(value = "email", required=false) String email){
+		if (name == null || name == ""){
+			return new ModelAndView("adduser");
+		}
+        GrantedAuthority[] userRoles = {new SimpleGrantedAuthority("ROLE_USER") };
+        userRepo.save(new User(name, password, email, Arrays.asList(userRoles)));
+		model.addAttribute("verification", name);
+        return new ModelAndView("adduser");
 	}
-
+	
 	@Secured({ "ROLE_ADMIN" })
-	@RequestMapping("/new")
-	public ModelAndView processInsert() {
-		return new ModelAndView("new");
+	@RequestMapping("/modifyuser")
+	public ModelAndView processModifyUser(Model model,
+			@RequestParam(value = "name", required=false) String name){
+		User user = new User();
+		user = userRepo.findByUser(name);
+		model.addAttribute("name", user.getUser());
+		model.addAttribute("email", user.getEmail());
+        return new ModelAndView("modifyuser");
 	}
 	
-	
-	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
-	@RequestMapping("/show")
-	public ModelAndView processShow(@RequestParam long ID){
-		Film film = new Film();
-		film = repo.findOne(ID);
-		ModelAndView modelAndView = new ModelAndView("show").addObject("anuncio", film);
-		return modelAndView;
+	@Secured({ "ROLE_ADMIN" })
+	@RequestMapping("/success")
+	public ModelAndView processSuccess(Model model,
+			@RequestParam(value = "name", required=false) String name,
+			@RequestParam(value = "originalName", required=false) String originalName,
+			@RequestParam(value = "password", required=false) String password,
+			@RequestParam(value = "email", required=false) String email){
+		User user = new User();
+		user = userRepo.findByUser(originalName);
+		if (name != null || name != ""){
+			user.setUser(name);
+		}
+		if (password != null || password != ""){
+			user.setPasswordHash(password);
+			}
+		if (email != null || email != ""){
+			user.setEmail(email);
+			}
+		userRepo.save(user);
+		model.addAttribute("verification", name);
+        return new ModelAndView("success");
 	}
-	*/
-	
 
 }

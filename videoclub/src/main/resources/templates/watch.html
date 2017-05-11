@@ -10,13 +10,23 @@
 </head>
 <body>
 <div class="container">
+		<div class="column">
+			<div class="col-xs-6">
+				<p class="text-left">
+					<a href="/search">Back</a>
+				</p>
+			</div>
+			<div class="col-xs-6">
+				<p class="text-right">
+					<a href="/home">Home</a>
+				</p>
+			</div>
+		</div>
+		
 	<h1>Watch film:</h1>
 	<div class="form-group" th:action="@{/watch}" method="post">
 		
 	</div>
-	<p>
-		<a href="/home">Back to home</a>
-	</p>
 	<div class="embed-responsive embed-responsive-16by9">
 		<iframe th:src="${film.Content}" frameborder="0" allowfullscreen="true"></iframe>
 	</div>

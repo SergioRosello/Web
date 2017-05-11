@@ -22,6 +22,8 @@ public class User {
     private String user;
 
     private String password;
+    
+    private String email;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<GrantedAuthority> roles;
@@ -29,13 +31,12 @@ public class User {
     public User() {
     }
 
-    public User(String user, String password, List<GrantedAuthority> roles) {
+    public User(String user, String password, String email, List<GrantedAuthority> roles) {
         this.user = user;
         this.password = new BCryptPasswordEncoder().encode(password);
+        this.setEmail(email);
         this.roles = roles;
     }
-
-    // getters, setters
 
     public String getUser() {
         return user;
@@ -50,7 +51,7 @@ public class User {
     }
 
     public void setPasswordHash(String passwordHash) {
-        this.password = passwordHash;
+        this.password = new BCryptPasswordEncoder().encode(passwordHash);
     }
 
     public List<GrantedAuthority> getRoles() {
@@ -60,5 +61,13 @@ public class User {
     public void setRoles(List<GrantedAuthority> roles) {
         this.roles = roles;
     }
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 }
