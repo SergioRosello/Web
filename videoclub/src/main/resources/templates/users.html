@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>home</title>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="column">
+			<div class="col-xs-12">
+				<p class="text-right">
+					<a href="/home">Home</a>
+				</p>
+			</div>
+		</div>
+
+		<h1>Manage users</h1>
+
+		<div th:if="${verification}" class="panel panel-primary">
+			<div class="panel-body">You have deleted:</div>
+			<div class="panel-footer">
+				<span th:text="${verification}"></span>
+			</div>
+		</div>
+		<div th:if="${verificationMod}" class="panel panel-primary">
+			<div class="panel-body">You have modified:</div>
+			<div class="panel-footer">
+				<span th:text="${verificationMod}"></span>
+			</div>
+		</div>
+
+		<form th:action="@{/adduser}" sec:authorize="hasRole('ROLE_ADMIN')"
+			method="post">
+			<input type="submit" class="btn btn-default" id="addUser"
+				value="addUser" /><br />
+		</form>
+		<div class="column">
+			<div th:each="user : ${users}">
+				<div class="col-md-2">
+					<div class="btn">
+						<button type="button" class="btn btn-default dropdown-toggle"
+							data-toggle="dropdown">
+							<div class="row">
+								<div class="col-xs-6">
+									<p th:text="${user.user}"></p>
+								</div>
+								<div class="col-xs-6">
+									<span class="caret"></span>
+								</div>
+							</div>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li><a th:href="@{/modifyuser(name=${user.user})}">Modify</a></li>
+							<li><a th:href="@{/users(user=${user.user})}">Delete</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

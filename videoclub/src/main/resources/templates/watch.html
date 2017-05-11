@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Watch a film!</title>
+  <meta charset="utf-8"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+		<div class="column">
+			<div class="col-xs-6">
+				<p class="text-left">
+					<a href="/search">Back</a>
+				</p>
+			</div>
+			<div class="col-xs-6">
+				<p class="text-right">
+					<a href="/home">Home</a>
+				</p>
+			</div>
+		</div>
+		
+	<h1>Watch film:</h1>
+	<div class="form-group" th:action="@{/watch}" method="post">
+		
+	</div>
+	<div class="embed-responsive embed-responsive-16by9">
+		<iframe th:src="${film.Content}" frameborder="0" allowfullscreen="true"></iframe>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+package code;
+
+@UsersRestController
+public class RestController {
+
+	
+}

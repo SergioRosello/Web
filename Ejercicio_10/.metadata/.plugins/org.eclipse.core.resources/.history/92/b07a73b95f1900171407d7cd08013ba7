@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>New announcement</h1>
+	<form action="insert">
+    	<input type="submit" value="New Announcement" />
+	</form>
+
+</body>
+</html>
