@@ -37,7 +37,17 @@
 		<p>
 			<a href="/home">Back to home</a>
 		</p>
-
+		<div class="column">
+			<div th:each="user : ${users}">
+				<div class="col-md-2">
+					<a th:href="@{/users(user=${user.user})}">
+						<div class="panel panel-default">
+							<div class="panel-heading" th:text="${user.user}"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

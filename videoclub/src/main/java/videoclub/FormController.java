@@ -103,9 +103,14 @@ public class FormController {
 	//Se muestra
 	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping("/users")
-	public ModelAndView processUsers() {
-		Iterable<User> users = userRepo.findAll();
-        return new ModelAndView("users").addObject("Film", users);
+	public ModelAndView processUsers(Model model, @RequestParam(value = "name", required=false) String name) {
+		if (name == null || name == ""){
+			Iterable<User> users = userRepo.findAll();
+			return new ModelAndView("users").addObject("users", users);
+		}
+		User user = userRepo.findByUser(name);
+		model.addAttribute("user", user);
+        return new ModelAndView("users");
 	}
 	
 	//TODO: No se muestra.
