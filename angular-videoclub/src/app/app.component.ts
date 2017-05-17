@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
-
+import { FilmService } from './film.service';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+	selector: 'app-root',
+	templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'app works!';
+	private films: string[] = [];
+	constructor(private filmService: FilmService) { }
+	search(title: string) {
+		this.films = this.filmService.getFilm(title);
+	}
+	list() {
+		this.films = this.filmService.getAllFilms();
+	}
 }
