@@ -6,4 +6,5 @@
 
 <button (click)="list()">Listar todos</button>
 
-<p *ngFor="let film of films">{{film}}</p>
+<p>Film title: {{Title}}</p>
+<p>Other info: {{Year}}, {{Plot}}, {{Director}}, {{Actors}}, <img [src]="Poster">, {{imdbRating}}</p>
