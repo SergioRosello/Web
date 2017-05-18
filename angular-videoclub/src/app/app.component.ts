@@ -21,41 +21,38 @@ export class AppComponent {
 
 	search(title: string) {
 		this.filmService.getTitle(title).subscribe(
-				films => this.Title = films,
-				error => console.error(error)
+			films => this.Title = films,
+			error => console.error(error)
 			);
 		
 		this.filmService.getYear(title).subscribe(
-				films => this.Year = films,
-				error => console.error(error)
+			films => this.Year = films,
+			error => console.error(error)
 			);
 
 		this.filmService.getPlot(title).subscribe(
-				films => this.Plot = films,
-				error => console.error(error)
+			films => this.Plot = films,
+			error => console.error(error)
 			);
 
 		this.filmService.getDirector(title).subscribe(
-				films => this.Director = films,
-				error => console.error(error)
+			films => this.Director = films,
+			error => console.error(error)
 			);
 
 		this.filmService.getActors(title).subscribe(
-				films => this.Actors = films,
-				error => console.error(error)
+			films => this.Actors = films,
+			error => console.error(error)
 			);
 
 		this.filmService.getPoster(title).subscribe(
-				films => this.Poster = films,
-				error => console.error(error)
+			films => this.Poster = films,
+			error => console.error(error)
 			);
 
 		this.filmService.getimdbRating(title).subscribe(
-				films => this.imdbRating = films,
-				error => console.error(error)
+			films => this.imdbRating = films,
+			error => console.error(error)
 			);
 	}
-
-
-
 }

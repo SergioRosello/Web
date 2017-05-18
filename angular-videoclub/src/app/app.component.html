@@ -4,7 +4,10 @@
 <button (click)="search(title.value); title.value=''">Buscar</button>
 <br><br>
 
-<button (click)="list()">Listar todos</button>
-
-<p>Film title: {{Title}}</p>
-<p>Other info: {{Year}}, {{Plot}}, {{Director}}, {{Actors}}, <img [src]="Poster">, {{imdbRating}}</p>
+<p *ngIf='Title'>Film title: {{Title}}</p>
+<p *ngIf='Year'>Year: {{Year}}</p>
+<p *ngIf='Plot'>Plot: {{Plot}}</p>
+<p *ngIf='Director'>Director:  {{Director}}</p>
+<p *ngIf='Actors'>Actors: {{Actors}}</p>
+<p *ngIf='imdbRating'>IMDb Rating: {{imdbRating}}</p>
+<p *ngIf='Poster'><img [src]="Poster"></p>
