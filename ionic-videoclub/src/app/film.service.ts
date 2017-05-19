@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/Rx';
 
 @Injectable()
@@ -40,10 +40,5 @@ export class FilmService {
 	getimdbRating(title: string){
 		let url = "http://www.omdbapi.com/?t=" + title;
 		return this.http.get(url).map(response => response.json().imdbRating);
-	}
-
-	private extractTitles(response: Response) {
-		let out = response.json().items.map(film => film.volumeInfo.title);
-		return out;
 	}
 }

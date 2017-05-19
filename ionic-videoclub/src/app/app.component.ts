@@ -13,7 +13,6 @@ import { HomePage } from '../pages/home/home';
 export class MyApp {
   rootPage:any = HomePage;
 
-  private result: Array<Object>;
   private Title: string;
   private Year: string;
   private Plot: string;
