@@ -1,1 +1,24 @@
 <ion-nav [root]="rootPage"></ion-nav>
+
+<h1>Welcome</h1>
+<h2>Search films by Film title</h2>
+
+<ion-list>
+	<ion-item>
+		<ion-label floating>Film Title</ion-label>
+		<ion-input #title type="text" value=''></ion-input>
+	</ion-item>
+	<button ion-button full (click)="search(title.value); title.value=''" >Full Button</button>
+</ion-list>
+
+<ion-content overflow-scroll='true'>
+	<ion-list no-lines>
+		<p ion-item *ngIf='Title'>Film title: {{Title}}</p>
+		<p ion-item *ngIf='Year'>Year: {{Year}}</p>
+		<p ion-item *ngIf='Plot'>Plot: {{Plot}}</p>
+		<p ion-item *ngIf='Director'>Director:  {{Director}}</p>
+		<p ion-item *ngIf='Actors'>Actors: {{Actors}}</p>
+		<p ion-item *ngIf='imdbRating'>IMDb Rating: {{imdbRating}}</p>
+		<p ion-item *ngIf='Poster'><img [src]="Poster"></p>
+	</ion-list>
+</ion-content>
