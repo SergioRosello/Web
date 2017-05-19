@@ -7,6 +7,11 @@ export class FilmService {
 
 	constructor(private http: Http) { }
 
+	getFilm(title: string){
+		let url = "http://www.omdbapi.com/?t=" + title;
+		return this.http.get(url);
+	}
+
 	getTitle(title: string){
 		let url = "http://www.omdbapi.com/?t=" + title;
 		return this.http.get(url).map(response => response.json().Title);

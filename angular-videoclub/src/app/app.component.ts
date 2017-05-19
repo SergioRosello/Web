@@ -8,7 +8,7 @@ import { FilmService } from './film.service';
 })
 export class AppComponent {
 
-	private result: Array<Object>;
+	private film: any = {};
 	private Title: string;
 	private Year: string;
 	private Plot: string;
@@ -18,6 +18,13 @@ export class AppComponent {
 	private imdbRating: string;
 
 	constructor(private filmService: FilmService, private http: Http) { }
+
+	getFilm(title: string){
+		return this.filmService.getFilm(title).subscribe(
+			response => this.film = response.json(),
+			error => console.error(error)
+			);
+	}
 
 	search(title: string) {
 		this.filmService.getTitle(title).subscribe(

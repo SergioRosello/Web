@@ -9,7 +9,7 @@
 				<div class="input-group input-group-lg">
 					<input #title type="text" class="form-control" />
 					<div class="input-group-btn">
-						<a class="btn btn-primary btn-block" role="button" (click)="search(title.value); title.value=''">Buscar</a>
+						<a class="btn btn-primary btn-block" role="button" (click)="getFilm(title.value); title.value=''">Buscar</a>
 					</div>
 				</div>
 			</div>
@@ -17,8 +17,8 @@
 		<br>
 		<div class="col-md-6">
 			<div class="list-group">
-				<p class="list-group-item" *ngIf='Title'>Film title: {{Title}}</p>
-				<p class="list-group-item" *ngIf='Year'>Year: {{Year}}</p>
+				<p class="list-group-item" *ngIf='Title'>Film title: {{film.Title}}</p>
+				<p class="list-group-item" *ngIf='Year'>Year: {{film.Year}}</p>
 				<p class="list-group-item" *ngIf='Plot'>Plot: {{Plot}}</p>
 				<p class="list-group-item" *ngIf='Director'>Director:  {{Director}}</p>
 				<p class="list-group-item" *ngIf='Actors'>Actors: {{Actors}}</p>
