@@ -14,37 +14,37 @@
 			<ion-label floating>Film Title</ion-label>
 			<ion-input #title type="text" value=''></ion-input>
 		</ion-item>
-		<button ion-button full (click)="search(title.value); title.value=''" >Find film</button>
+		<button ion-button full (click)="getFilm(title.value); title.value=''" >Find film</button>
 	</ion-list>
 
-	<ion-list no-lines *ngIf='Title'>
+	<ion-list no-lines *ngIf='film'>
 		<ion-item>
 		<h2>Title</h2>
-			<p text-wrap *ngIf='Title'>{{Title}}</p>
+			<p text-wrap *ngIf='film'>{{film.Title}}</p>
 		</ion-item>
 		<ion-item>
 		<h2>Poster</h2>
-			<p style="text-align: center;" *ngIf='Poster'><img [src]="Poster"></p>
+			<p style="text-align: center;" *ngIf='film'><img [src]="film.Poster"></p>
 		</ion-item>
 		<ion-item>
 		<h2>Year</h2>
-			<p text-wrap *ngIf='Year'>{{Year}}</p>
+			<p text-wrap *ngIf='film'>{{film.Year}}</p>
 		</ion-item>
 		<ion-item>
 		<h2>Plot</h2>
-			<p text-wrap *ngIf='Plot'>{{Plot}}</p>
+			<p text-wrap *ngIf='film'>{{film.Plot}}</p>
 		</ion-item>
 		<ion-item>
 		<h2>Director</h2>
-			<p text-wrap *ngIf='Director'>{{Director}}</p>
+			<p text-wrap *ngIf='film'>{{film.Director}}</p>
 		</ion-item>
 		<ion-item>
 		<h2>Actors</h2>
-			<p text-wrap *ngIf='Actors'>{{Actors}}</p>
+			<p text-wrap *ngIf='film'>{{film.Actors}}</p>
 		</ion-item>
 		<ion-item>
 		<h2>IMDb Rating</h2>
-			<p text-wrap *ngIf='imdbRating'>{{imdbRating}}</p>	
+			<p text-wrap *ngIf='film'>{{film.imdbRating}}</p>	
 		</ion-item>
 		
 	</ion-list>

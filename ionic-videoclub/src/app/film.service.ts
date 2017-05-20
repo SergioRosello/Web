@@ -7,38 +7,10 @@ export class FilmService {
 
 	constructor(private http: Http) { }
 
-	getTitle(title: string){
+	getFilm(title: string){
 		let url = "http://www.omdbapi.com/?t=" + title;
-		return this.http.get(url).map(response => response.json().Title);
-	}
-
-	getYear(title: string){
-		let url = "http://www.omdbapi.com/?t=" + title;
-		return this.http.get(url).map(response => response.json().Year);
-	}
-
-	getPlot(title: string){
-		let url = "http://www.omdbapi.com/?t=" + title;
-		return this.http.get(url).map(response => response.json().Plot);
-	}
-
-	getDirector(title: string){
-		let url = "http://www.omdbapi.com/?t=" + title;
-		return this.http.get(url).map(response => response.json().Director);
-	}
-
-	getActors(title: string){
-		let url = "http://www.omdbapi.com/?t=" + title;
-		return this.http.get(url).map(response => response.json().Actors);
-	}
-
-	getPoster(title: string){
-		let url = "http://www.omdbapi.com/?t=" + title;
-		return this.http.get(url).map(response => response.json().Poster);
-	}
-
-	getimdbRating(title: string){
-		let url = "http://www.omdbapi.com/?t=" + title;
-		return this.http.get(url).map(response => response.json().imdbRating);
+		return this.http.get(url).map(
+			response => response.json()
+			);
 	}
 }
