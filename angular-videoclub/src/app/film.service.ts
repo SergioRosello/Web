@@ -9,7 +9,9 @@ export class FilmService {
 
 	getFilm(title: string){
 		let url = "http://www.omdbapi.com/?t=" + title;
-		return this.http.get(url);
+		return this.http.get(url).map(
+				response => response.json()
+			);
 	}
 
 	getTitle(title: string){

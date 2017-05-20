@@ -17,16 +17,16 @@
 		<br>
 		<div class="col-md-6">
 			<div class="list-group">
-				<p class="list-group-item" *ngIf='Title'>Film title: {{film.Title}}</p>
-				<p class="list-group-item" *ngIf='Year'>Year: {{film.Year}}</p>
-				<p class="list-group-item" *ngIf='Plot'>Plot: {{Plot}}</p>
-				<p class="list-group-item" *ngIf='Director'>Director:  {{Director}}</p>
-				<p class="list-group-item" *ngIf='Actors'>Actors: {{Actors}}</p>
-				<p class="list-group-item" *ngIf='imdbRating'>IMDb Rating: {{imdbRating}}</p>
+				<p class="list-group-item" *ngIf='film'>Film title: {{film.Title}}</p>
+				<p class="list-group-item" *ngIf='film'>Year: {{film.Year}}</p>
+				<p class="list-group-item" *ngIf='film'>Plot: {{film.Plot}}</p>
+				<p class="list-group-item" *ngIf='film'>Director:  {{film.Director}}</p>
+				<p class="list-group-item" *ngIf='film'>Actors: {{film.Actors}}</p>
+				<p class="list-group-item" *ngIf='film'>IMDb Rating: {{film.imdbRating}}</p>
 			</div>
 		</div>
 		<div class="col-md-6">
-			<p style="text-align: center;" *ngIf='Poster'><img [src]="Poster" style="width: 100%;"></p>
+			<p style="text-align: center;" *ngIf='film'><img [src]="film.Poster" style="width: 100%;"></p>
 		</div>
 	</div>
 </div>

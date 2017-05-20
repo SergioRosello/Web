@@ -1,64 +1,33 @@
 import { Component } from '@angular/core';
 // Para el servico REST
-import { Http } from '@angular/http';
 import { FilmService } from './film.service';
-@Component({
-	selector: 'app-root',
-	templateUrl: './app.component.html'
-})
-export class AppComponent {
 
-	private film: any = {};
+
+export class Film {
 	private Title: string;
-	private Year: string;
+	private Year: number;
 	private Plot: string;
 	private Director: string;
 	private Actors: string;
 	private Poster: string;
-	private imdbRating: string;
+	private imdbRating: number;
+}
 
-	constructor(private filmService: FilmService, private http: Http) { }
+
+@Component({
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	providers: [FilmService]
+})
+export class AppComponent {
+
+	private film: Film;
+
+	constructor(private filmService: FilmService) { }
 
 	getFilm(title: string){
-		return this.filmService.getFilm(title).subscribe(
-			response => this.film = response.json(),
-			error => console.error(error)
-			);
-	}
-
-	search(title: string) {
-		this.filmService.getTitle(title).subscribe(
-			films => this.Title = films,
-			error => console.error(error)
-			);
-		
-		this.filmService.getYear(title).subscribe(
-			films => this.Year = films,
-			error => console.error(error)
-			);
-
-		this.filmService.getPlot(title).subscribe(
-			films => this.Plot = films,
-			error => console.error(error)
-			);
-
-		this.filmService.getDirector(title).subscribe(
-			films => this.Director = films,
-			error => console.error(error)
-			);
-
-		this.filmService.getActors(title).subscribe(
-			films => this.Actors = films,
-			error => console.error(error)
-			);
-
-		this.filmService.getPoster(title).subscribe(
-			films => this.Poster = films,
-			error => console.error(error)
-			);
-
-		this.filmService.getimdbRating(title).subscribe(
-			films => this.imdbRating = films,
+		this.filmService.getFilm(title).subscribe(
+			response => this.film = response,
 			error => console.error(error)
 			);
 	}
