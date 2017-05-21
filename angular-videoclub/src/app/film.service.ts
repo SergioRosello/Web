@@ -7,43 +7,10 @@ export class FilmService {
 
 	constructor(private http: Http) { }
 
-	getTitle(title: string){
-		let url = "http://www.omdbapi.com/?t=" + title;
-		return this.http.get(url).map(response => response.json().Title);
-	}
-
-	getYear(title: string){
-		let url = "http://www.omdbapi.com/?t=" + title;
-		return this.http.get(url).map(response => response.json().Year);
-	}
-
-	getPlot(title: string){
-		let url = "http://www.omdbapi.com/?t=" + title;
-		return this.http.get(url).map(response => response.json().Plot);
-	}
-
-	getDirector(title: string){
-		let url = "http://www.omdbapi.com/?t=" + title;
-		return this.http.get(url).map(response => response.json().Director);
-	}
-
-	getActors(title: string){
-		let url = "http://www.omdbapi.com/?t=" + title;
-		return this.http.get(url).map(response => response.json().Actors);
-	}
-
-	getPoster(title: string){
-		let url = "http://www.omdbapi.com/?t=" + title;
-		return this.http.get(url).map(response => response.json().Poster);
-	}
-
-	getimdbRating(title: string){
-		let url = "http://www.omdbapi.com/?t=" + title;
-		return this.http.get(url).map(response => response.json().imdbRating);
-	}
-
-	private extractTitles(response: Response) {
-		let out = response.json().items.map(film => film.volumeInfo.title);
-		return out;
+	getFilm(title: string){
+		let url = "http://ec2-34-211-5-120.us-west-2.compute.amazonaws.com/?&t=" + title;
+		return this.http.get(url).map(
+				response => response.json()
+			);
 	}
 }
